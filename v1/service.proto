@@ -1,0 +1,28 @@
+syntax = 'proto3';
+
+package squzy.storage.v1.receiver;
+
+service CheckReceiverService {
+    rpc GetChecks (stream CheckRequest) returns (stream CheckStreamResponse);
+}
+
+message CheckRequest {
+    CheckBody check = 1;
+}
+
+message CheckStreamResponse {
+    repeated string chekers_errors = 1;
+}
+
+message CheckBody {
+    string check_id = 1;
+    string time_start = 2;
+    string time_end = 3;
+    Error error = 4;
+
+    message Error {
+        int32 code = 1;
+        string message = 2;
+    }
+}
+
