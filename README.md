@@ -1,0 +1,2 @@
+# squzy-storage-proto
+
